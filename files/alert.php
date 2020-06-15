@@ -27,5 +27,14 @@ if(isset($_GET['msg'])){
         </div>
                ";
     }
+    elseif($_GET['msg'] == 'd_done'){
+      echo "<div class=\"alert error alert-success m-0 alert-dismissible fade show\" role=\"alert\">
+        <strong>DONE !</strong> this information Deleted seccussfuly.
+        <button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\">
+          <span aria-hidden=\"true\">&times;</span>
+        </button>
+      </div>
+             ";
+  }
 }
 ?>

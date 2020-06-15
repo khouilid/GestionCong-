@@ -3,7 +3,7 @@ include "files/navbar.php";
 if (!empty($_POST)){
   $mail = $_POST['mail'];
   $password = $_POST['password'];
-  $sql = "SELECT Mail , ipassword, UserType FROM persons WHERE Mail = ? AND ipassword = ?";
+  $sql = "SELECT LastName, FirstName ,  Mail ,  UserType ,  ipassword ,  daysLeft ,  Phone ,  cin  FROM persons WHERE Mail = ? AND ipassword = ?";
   $stmt = $pdo->prepare($sql);
   $stmt->execute([$mail, $password]);
   $data = $stmt->fetch();
@@ -11,6 +11,11 @@ if (!empty($_POST)){
     header('location:'. $data['UserType'] .'.php');
     $_SESSION['type'] = $data['UserType'];
     $_SESSION['mail'] = $data['Mail'];
+    $_SESSION['LastName'] = $data['LastName'];
+    $_SESSION['FirstName'] = $data['FirstName'];
+    $_SESSION['Phone'] = $data['Phone'];
+    $_SESSION['cin'] = $data['cin'];
+    $_SESSION['daysLeft'] = $data['daysLeft'];
   }
 }
 ?>
