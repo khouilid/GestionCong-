@@ -4,7 +4,6 @@ session_start();
 ?>
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -32,7 +31,6 @@ session_start();
         </div>
     </div>
 </nav>
-
 <a class="text-decoration-none text-white" href="Actions/log_out.php">
 <div class="icon bg-danger shadow-lg">
 <i class="fas fa-sign-out-alt"></i>

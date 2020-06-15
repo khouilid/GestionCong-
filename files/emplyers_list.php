@@ -14,8 +14,8 @@
         // get all the emlyeers in the DB
         $stmt = $pdo->query("SELECT * FROM `persons` WHERE UserType = 'Employee' ");
         while($users = $stmt->fetch()){
-            echo "<tr>
-            <th scope=\"row\">". $users['cin'] ."</th>
+            echo "<tr class='hove'>
+            <th  scope=\"row\">". $users['cin'] ."</th>
             <td>". $users['FirstName'] ."</td>
             <td>". $users['LastName'] ."</td>
             <td>". $users['Mail'] ."</td>

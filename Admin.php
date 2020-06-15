@@ -1,6 +1,9 @@
 <?php
 include "link_it.php";
 include "files/navbar.php";
+if($_SESSION['type'] != 'Admin'){
+  header('location: index.php');
+}
 // some alerts for msgs
 include "files/alert.php";
 ?>
@@ -16,7 +19,6 @@ include "files/emplyers_list.php";
 include "files/form_add.php";
 include "files/Update_form.php"; 
 ?>
-
 <script src='src/js/general.js'></script>
 <?php
 include "files/footer.php";

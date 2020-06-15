@@ -1,6 +1,9 @@
 <?php
 include "link_it.php";
 include "files/navbar.php";
+if($_SESSION['type'] != 'Boss'){
+    header('location: index.php');
+}
 // some alerts for msgs
 include "files/alert.php";
 ?>
@@ -31,7 +34,7 @@ include "files/Update_form.php";
             to
             the work, by such means as by varying his or her articulation and phrasing, choosing how long to make
             fermatas
-            (held notes) or pauses, and — in the case of bowed string instruments, woodwinds or brass instruments —
+            held notes or pauses, and — in the case of bowed string instruments, woodwinds or brass instruments —
             deciding
             whether to use expressive effects such as vibrato or portamento. For a singer or instrumental performer, the
             process of deciding how to perform music that has been previously composed and notated is termed
@@ -56,8 +59,6 @@ include "files/Update_form.php";
         </div>
     </div>
 </div>
-
-
 <script src='src/js/general.js'></script>
 <?php
 include "files/footer.php";

@@ -8,13 +8,7 @@ if (!empty($_POST)){
   $stmt->execute([$mail, $password]);
   $data = $stmt->fetch();
   if($data){
-    if($data['UserType'] == 'Admin'){
-      header('location: Admin.php');
-    }elseif($data['UserType'] == 'Boss'){
-      header('location: boss.php');
-    }elseif($data['UserType'] == 'Boss'){
-      header('location:  index.php');
-    }
+    header('location:'. $data['UserType'] .'.php');
     $_SESSION['type'] = $data['UserType'];
     $_SESSION['mail'] = $data['Mail'];
   }
@@ -27,7 +21,6 @@ if (!empty($_POST)){
           <input type="email" name="mail" class="form-control width mt-3" placeholder="Username" aria-label="Username" aria-describedby="addon-wrapping">
           <input type="password" name='password' class="form-control width mt-3" placeholder="Password" aria-label="Username" aria-describedby="addon-wrapping">
           <?php 
-          // if(empty($_SESSION['mail'])){
             if (!empty($_POST)){
                 if(!$data){
                   echo"<p class=\"text-danger text-center\">Sorry User Name or Password not Correct</p>";
