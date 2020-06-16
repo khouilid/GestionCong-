@@ -22,42 +22,41 @@ include "files/form_add.php";
 include "files/Update_form.php"; 
 ?>
 <div id="Employee_request" style="display: none ">
-    <div class="container p-4 shadow mt-5 rounded">
-        <h4 class="text-center">abdelkbir khouilid</h4>
-        <p>Musical notation serves as a set of directions for a performer, but there is a whole continuum of
-            possibilities
-            concerning how much the performer determines the final form of the rendered work in performance.
-
-            Even in a conventional Western piece of instrumental music, in which all of the melodies, chords, and
-            basslines
-            are written out in musical notation, the performer has a degree of latitude to add artistic interpretation
-            to
-            the work, by such means as by varying his or her articulation and phrasing, choosing how long to make
-            fermatas
-            held notes or pauses, and — in the case of bowed string instruments, woodwinds or brass instruments —
-            deciding
-            whether to use expressive effects such as vibrato or portamento. For a singer or instrumental performer, the
-            process of deciding how to perform music that has been previously composed and notated is termed
-            "interpretation". Different performers' interpretations of the same work of music can vary widely, in terms
-            of
-            the tempos that are chosen and the playing or singing style or phrasing of the melodies. Composers and
-            songwriters who present their own music are interpreting, just as much as those who perform the music of
-            others.
-            The standard body of choices and techniques present at a given time and a given place is referred to as
-            performance practice, whereas interpretation is generally used to mean the individual choices of a
-            performer.[citation needed]
-        </p>
-        <div class="d-flex justify-content-around text-center font-weight-bold align-items-center">
-            <p>12 <br> Score</p>
-            <p>12 <br> Score</p>
-            <button id="add_Employee_btn" type="button" class="btn  btn-success  height font-weight-bold"><i
-                    class="fas fa-check"></i>
-                Accepte</button>
-            <button id="add_Employee_btn" type="button" class="btn font-weight-bold btn-danger height btn"><i
-                    class="fas fa-times"></i>
-                Refusal</button>
-        </div>
-    </div>
+<?php
+ // get all the emlyeers in the DB
+ $stmt = $pdo->query("SELECT d.demand_id , d.msg, d.days, p.FirstName, p.LastName , p.daysLeft FROM demand d INNER JOIN persons p ON p.ID = d.id WHERE d.reponce = '0';");
+ // loop truth all element and show them in the list  
+while($demand = $stmt->fetch()){
+     echo "  
+     <form action='Actions/reponce.php' method='POST'>
+            <div class=\"container p-4 shadow mt-5 rounded\">
+            <h4 class=\"text-center\"> ". $demand['FirstName'] ."  ". $demand['LastName'] ."</h4>
+            <hr>
+            <p class=\"text-center m-4 rounded bg-light p-5\"> ". $demand['msg'] ."
+            </p>
+            <div class=\"d-flex justify-content-around text-center font-weight-bold align-items-center\">
+                <p> ". $demand['days'] ."<br>demand</p>
+                <p> ". $demand['daysLeft'] ."<br>Days he get</p>
+            </div>
+            <div class=\"d-flex justify-content-center\">
+            <div class=\"mt-2 mr-5\">
+                <input type=\"radio\" name=\"reponce\" value=\"2\" id=\"oui\">
+                <label for=\"oui\">Accepte</label>
+            </div>
+            <div class=\"mt-2\">
+                <input type=\"radio\" name=\"reponce\" value=\"1\" id=\"non\">
+                <label for=\"non\">Refusel</label>
+            </div>
+            </div>
+            <input hidden value='". $demand['demand_id'] ."' name='id'>
+            <div class='d-flex justify-content-center mt-5'>
+                <button  type=\"submit\" class=\"btn font-weight-bold width ml-3 selects border\"><i class=\"far fa-paper-plane mr-2\"></i>Send</button>
+            </div>
+            </div>
+    </form>
+    " ;
+}
+?>
 </div>
 <script src='src/js/general.js'></script>
 <?php

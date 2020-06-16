@@ -2,7 +2,7 @@ body{
     font-family: 'Balsamiq Sans', cursive;
 }
 .width{
-    width: 300px !important;
+    width: 18em !important;
 }
 .width2{
     width: 350px !important;
@@ -106,3 +106,7 @@ body{
 //    border-left: 4px solid red; 
 //    background-color: rgba(255, 0, 0, 0.281);
 // }
+textarea{
+    height: 20em !important;
+    
+}

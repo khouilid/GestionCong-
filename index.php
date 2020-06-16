@@ -1,12 +1,16 @@
 <?php 
 include "files/navbar.php";
+// check if user submit the btn 
 if (!empty($_POST)){
+  // get his inputs value
   $mail = $_POST['mail'];
   $password = $_POST['password'];
-  $sql = "SELECT LastName, FirstName ,  Mail ,  UserType ,  ipassword ,  daysLeft ,  Phone ,  cin  FROM persons WHERE Mail = ? AND ipassword = ?";
+  // if the inputs correct we get all his info 
+  $sql = "SELECT ID, LastName, FirstName ,  Mail ,  UserType ,  ipassword ,  daysLeft ,  Phone ,  cin  FROM persons WHERE Mail = ? AND ipassword = ?";
   $stmt = $pdo->prepare($sql);
   $stmt->execute([$mail, $password]);
   $data = $stmt->fetch();
+  // we rederict them into hes right dashboerd & push the info into SESSION 
   if($data){
     header('location:'. $data['UserType'] .'.php');
     $_SESSION['type'] = $data['UserType'];
@@ -16,6 +20,7 @@ if (!empty($_POST)){
     $_SESSION['Phone'] = $data['Phone'];
     $_SESSION['cin'] = $data['cin'];
     $_SESSION['daysLeft'] = $data['daysLeft'];
+    $_SESSION['ID'] = $data['ID'];
   }
 }
 ?>

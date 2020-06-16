@@ -20,6 +20,7 @@ session_start();
         <div class="collapse navbar-collapse d-flex justify-content-center" id="navbarNav">
             <ul class="navbar-nav">
                 <li class="nav-item active">
+                <!-- sow the Grade of the user -->
                 <?php 
                  if(isset($_SESSION['type'])){
                      echo "<a class=\"nav-link font-weight-bold text-white\" >".$_SESSION['type'] ."</a>";
