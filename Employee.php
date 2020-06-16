@@ -14,6 +14,7 @@ include "files/alert.php";
 </div>
 
 
+<form action="Actions/Create_pdf.php" method="POST">
 <div   id="Get_info" class="w-50 m-auto bg-light rounded-lg mt-5 p-3 shadow">
     <div class="row justify-content-center"><h2 class="font-weight-bolder pro rounded" >Profil</h2></div>
     <div class="d-flex align-items-center">
@@ -56,6 +57,7 @@ include "files/alert.php";
     </div>
 
 </div>
+</form>
 
 <div style="display:none;" id="Post_D" class="pt-5">
    <form action="Actions/demand.php" method="POST">
